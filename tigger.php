@@ -20,7 +20,7 @@ Adds a getCounter () method that returns the number of times Tigger roared.
 
 class Tigger {
 
-private $counter = 0;
+private static $counter = 0;
 private static $instance;
 
 private function __construct() {
@@ -30,8 +30,7 @@ private function __construct() {
 
 
 public function roar() {
-        global $counter; 
-        $counter++;
+        self::$counter++;
         echo "<br />Grrr!<br />";
 }
 
@@ -43,15 +42,14 @@ public static function getInstance() {
         self::$instance = new Tigger();
     }
 
-return self::$instance;
+    return self::$instance;
 
 }
 
 public function getCounter() {
 
-global $counter; 
-echo $counter;
-echo "<br />";
+    echo Tigger::$counter;
+    echo "<br />";
 
 }
 
